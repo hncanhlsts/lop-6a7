@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hội Thi Văn Nghệ Khối 6 - NH 2026-2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .back-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+    .back-nav:hover {
+      transform: translateX(-4px);
+    }
+    
+    .page-header {
+      background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+      color: white;
+      padding: 36px 32px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+    .page-header h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .theme-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Thống kê nhanh */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid var(--border);
+    }
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .stat-card:nth-child(1) .stat-icon { background: #f3e8ff; color: #7c3aed; }
+    .stat-card:nth-child(2) .stat-icon { background: #dbeafe; color: #2563eb; }
+    .stat-card:nth-child(3) .stat-icon { background: #fef3c7; color: #d97706; }
+    .stat-card:nth-child(4) .stat-icon { background: #fee2e2; color: #dc2626; }
+    
+    .stat-info h4 {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .stat-info p {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* Điều hướng Tab */
+    .nav-tabs {
+      display: flex;
+      gap: 10px;
+      background: #e2e8f0;
+      padding: 6px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 12px 18px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+    .tab-btn.active {
+      background: var(--surface);
+      color: #7c3aed;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Khung nội dung */
+    .content-box {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .box-header {
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+    .box-header h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+    }
+    .box-header p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Bảng dữ liệu */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 10px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background-color: #f8fafc;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Cấu trúc Timeline trực quan */
+    .timeline-wrap {
+      position: relative;
+      padding-left: 28px;
+      margin-top: 16px;
+    }
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 6px;
+      bottom: 6px;
+      width: 3px;
+      background: #e2e8f0;
+    }
+    .timeline-node {
+      position: relative;
+      margin-bottom: 22px;
+    }
+    .timeline-node:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-node::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #7c3aed;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px #7c3aed;
+    }
+    .timeline-date {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #7c3aed;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Thẻ cảnh báo */
+    .alert-box {
+      border-left: 4px solid var(--border);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+    }
+    .alert-danger { border-color: #ef4444; background: #fef2f2; }
+    .alert-warning { border-color: #f59e0b; background: #fffbeb; }
+    .alert-info { border-color: #7c3aed; background: #f5f3ff; }
+    .alert-box h4 {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .tag-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .tag-purple { background: #f3e8ff; color: #7e22ce; }
+    .tag-blue { background: #dbeafe; color: #1e40af; }
+    .tag-orange { background: #ffedd5; color: #c2410c; }
+  </style>
+</head>
+<body>
+
+  <!-- Thanh Navbar dùng chung -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-brand">
+        <span>🏫</span> Cổng Thông Tin Lớp 6
+      </a>
+      <ul class="nav-menu">
+        <li><a href="nha-truong.html" class="nav-link">Nhà trường</a></li>
+        <li><a href="phoi-hop.html" class="nav-link">Phối hợp</a></li>
+        <li><a href="hoi-thao.html" class="nav-link">Hội thao</a></li>
+        <li><a href="van-nghe.html" class="nav-link active">Văn nghệ</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="../index.html" class="back-nav">← Quay về Trang chủ</a>
+
+    <!-- Tiêu đề trang -->
+    <section class="page-header">
+      <div class="theme-badge">Hội thi biểu diễn nghệ thuật 2026 – 2027</div>
+      <h1>Chủ Đề: "Điểm Tựa Hạnh Phúc"</h1>
+      <p>(Anchor of Happiness) • Nơi học sinh cùng nhau cất tiếng nói, nuôi dưỡng nội lực và tự tin tỏa sáng trên sân khấu nghệ thuật.</p>
+    </section>
+
+    <!-- Thống kê chỉ số cốt lõi -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">⏱️</div>
+        <div class="stat-info">
+          <h4>Thời lượng tối đa</h4>
+          <p>Tối đa 6 phút / tiết mục</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎭</div>
+        <div class="stat-info">
+          <h4>Thể loại bắt buộc</h4>
+          <p>Đủ 3: Hát – Nhảy – Kịch</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
+        <div class="stat-info">
+          <h4>Vòng loại Khối 6</h4>
+          <p>10:15 - 11:30 (17/10/2026)</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🚫</div>
+        <div class="stat-info">
+          <h4>Ranh giới dàn dựng</h4>
+          <p>-3 điểm nếu PH làm thay</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs điều hướng -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab(0)">⏳ Timeline & Lịch Trình</button>
+      <button class="tab-btn" onclick="switchTab(1)">🎭 Thể Lệ & Cấu Trúc Tiết Mục</button>
+      <button class="tab-btn" onclick="switchTab(2)">📝 Tiêu Chí Chấm Điểm & Điểm Phong Trào</button>
+      <button class="tab-btn" onclick="switchTab(3)">⚖️ Kỷ Luật & Hướng Dẫn CMHS</button>
+    </nav>
+
+    <!-- TAB 0: TIMELINE & LỊCH TRÌNH -->
+    <section class="tab-content active" id="tab-0">
+      
+      <article class="content-box">
+        <div class="box-header">
+          <h2>⏳ Tiến Trình Chuẩn Bị & Thi Đấu Văn Nghệ (Khối 6)</h2>
+          <p>Lộ trình từ khâu ý tưởng, nộp nhạc nền đến các vòng thi chính thức</p>
+        </div>
+        
+        <div class="timeline-wrap">
+          <div class="timeline-node">
+            <div class="timeline-date">21/09 – 16:30 ngày 10/10/2026</div>
+            <div class="timeline-title">1. Đăng ký tên tiết mục & nộp file nhạc nền</div>
+            <div class="timeline-desc">
+              • Nộp qua link trực tuyến từ BTC[cite: 2]. Cấu trúc đặt tên file: <code>Lớp_Tên tiết mục</code> (Ví dụ: <i>6A1_HanhTrinhHanhPhuc</i>)[cite: 2].<br>
+              • Nếu chỉ dùng âm thanh, nộp file <code>.mp3</code>[cite: 2]. Sau 16:30 ngày 10/10 hệ thống sẽ khóa, nộp trễ trừ 1 điểm/ngày[cite: 2].
+            </div>
+          </div>
+
+          <div class="timeline-node">
+            <div class="timeline-date">28/09 – 16/10/2026 (Trưa Thứ 2 & Thứ 5)</div>
+            <div class="timeline-title">2. Lịch tập luyện cố định tại lớp</div>
+            <div class="timeline-desc">
+              • Cố định 2 buổi trưa mỗi tuần tại phòng học của lớp[cite: 2].<br>
+              • Nếu tập ngoài giờ này, Ban cán sự lớp chủ động đăng ký trước phòng tập và thời gian với giám thị (SE)[cite: 2].
+            </div>
+          </div>
+
+          <div class="timeline-node">
+            <div class="timeline-date">12/10 – 16/10/2026</div>
+            <div class="timeline-title">3. Tổng dợt sân khấu & Ráp âm thanh nhạc cụ</div>
+            <div class="timeline-desc">
+              • Mỗi lớp được sử dụng <b>1 tiết Âm nhạc</b> để tập di chuyển đội hình thực tế trên sân khấu Hội trường[cite: 2].<br>
+              • Các lớp có sử dụng ban nhạc/nhạc cụ mộc sẽ được BTC và CSVC bố trí test âm thanh sân khấu riêng vào buổi trưa[cite: 2].
+            </div>
+          </div>
+
+          <div class="timeline-node">
+            <div class="timeline-date">Sáng Thứ Bảy, 17/10/2026 (10:15 – 11:30)</div>
+            <div class="timeline-title">4. Vòng Loại Hội Thi Văn Nghệ Cấp Trường</div>
+            <div class="timeline-desc">
+              • <b>Địa điểm:</b> Hội trường trường THCS & THPT Đinh Thiện Lý[cite: 2].<br>
+              • <b>Khung giờ thi Khối 6:</b> Từ 10:15 đến 11:30 (Khối 8: 7:30–8:45, Khối 7: 9:00–10:00)[cite: 2].
+            </div>
+          </div>
+
+          <div class="timeline-node">
+            <div class="timeline-date">Chiều Thứ Sáu, 06/11/2026 (14:50 – 16:20)</div>
+            <div class="timeline-title">5. Vòng Chung Kết & Công Bố Giải Thưởng</div>
+            <div class="timeline-desc">
+              • Diễn ra vào Tiết 8, 9 tại Hội trường dành cho các tiết mục xuất sắc nhất được chọn từ Vòng loại[cite: 2].<br>
+              • Các tiết mục tiêu biểu sẽ được chọn biểu diễn tại <b>Lễ Kỷ niệm Ngày Nhà giáo Việt Nam 20/11</b>[cite: 2].
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- TAB 1: THỂ LỆ & CẤU TRÚC TIẾT MỤC -->
+    <section class="tab-content" id="tab-1">
+      
+      <article class="content-box">
+        <div class="box-header">
+          <h2>🎭 Yêu Cầu Về Tiết Mục Biểu Diễn</h2>
+          <p>Mỗi lớp tham gia 01 tiết mục duy nhất kết hợp cả 3 thể loại xuyên suốt một chủ đề</p>
+        </div>
+
+        <div class="alert-box alert-info">
+          <h4 style="color: #6d28d9;">Đặc điểm nổi bật năm học 2026 – 2027</h4>
+          <p>Hội trường đã được trang bị <b>màn hình LED sân khấu</b>, các lớp có thể dàn dựng video clip minh họa, bối cảnh trình chiếu để tăng tính thẩm mỹ và cảm xúc cho phần trình diễn[cite: 1, 2].</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">Hạng mục</th>
+                <th style="width: 25%;">Quy định chuẩn</th>
+                <th style="width: 50%;">Chi tiết hướng dẫn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Thời lượng tổng</b></td>
+                <td><span class="tag-badge tag-purple">Tối đa 6 phút</span></td>
+                <td>Quá thời gian sẽ bị trừ điểm trực tiếp trên tổng điểm BGK[cite: 2].</td>
+              </tr>
+              <tr>
+                <td><b>Phần Hát</b></td>
+                <td>Tối thiểu <b>1.0 phút</b></td>
+                <td>Đơn ca, song ca, tam/tứ ca, tốp ca, hợp ca hoặc hát bè[cite: 2]. Hát đúng nhịp phách, cao độ, có sắc thái[cite: 2].</td>
+              </tr>
+              <tr>
+                <td><b>Phần Nhảy / Múa</b></td>
+                <td>Tối thiểu <b>1.0 phút</b></td>
+                <td>Động tác đều, kỹ thuật đẹp mắt, có điểm nhấn thu hút sân khấu[cite: 2].</td>
+              </tr>
+              <tr>
+                <td><b>Phần Kịch / Ca kịch</b></td>
+                <td>Tối thiểu <b>1.5 phút</b></td>
+                <td>Thoại kịch, hoạt cảnh có cốt truyện rõ ràng, truyền cảm xúc và mang thông điệp nhân văn[cite: 2].</td>
+              </tr>
+              <tr>
+                <td><b>Thực hiện song song</b></td>
+                <td>Tính thời gian cộng dồn</td>
+                <td>Ví dụ: Hát và Nhảy kết hợp cùng lúc thì đoạn đó phải đạt tối thiểu <b>2.0 phút</b>[cite: 2].</td>
+              </tr>
+              <tr>
+                <td><b>Trang phục & Đạo cụ</b></td>
+                <td>Khuyến khích tự làm</td>
+                <td>Ưu tiên vật liệu tái chế, thân thiện môi trường; hạn chế tối đa thuê mua tốn kém[cite: 2].</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- TAB 2: TIÊU CHÍ CHẤM ĐIỂM & ĐIỂM THI ĐUA -->
+    <section class="tab-content" id="tab-2">
+      
+      <article class="content-box">
+        <div class="box-header">
+          <h2>📝 Bảng Tiêu Chí Chấm Điểm Chuyên Môn (Thang 10 điểm)</h2>
+          <p>Điểm của Giám khảo môn Âm nhạc sẽ được tính nhân hệ số hai (x2)[cite: 2]</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 22%;">Tiêu chí</th>
+                <th style="width: 10%;">Tối đa</th>
+                <th style="width: 68%;">Mô tả chi tiết mức đánh giá</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>1. Kỹ năng Trình diễn</b></td>
+                <td><b>3.0 điểm</b></td>
+                <td>• Kỹ thuật biểu diễn (hát, nhảy, diễn xuất) xuất sắc (1.0đ)[cite: 2].<br>• Tự nhiên, thuộc bài, làm chủ sân khấu, phối hợp đội hình ăn ý (1.0đ)[cite: 2].<br>• Tính nghệ thuật cao, truyền tải trọn vẹn nội dung tác phẩm (1.0đ)[cite: 2].</td>
+              </tr>
+              <tr>
+                <td><b>2. Nội dung & Ý nghĩa</b></td>
+                <td><b>2.0 điểm</b></td>
+                <td>• Nội dung phù hợp lứa tuổi học đường, bám sát chủ đề "Điểm tựa hạnh phúc" (1.0đ)[cite: 2].<br>• Cốt truyện và nhân vật xây dựng rõ ràng, mạch lạc (0.5đ)[cite: 2].<br>• Tính nhân văn sâu sắc, truyền tải bài học giáo dục tích cực (0.5đ)[cite: 2].</td>
+              </tr>
+              <tr>
+                <td><b>3. Trang phục & Đạo cụ</b></td>
+                <td><b>2.0 điểm</b></td>
+                <td>• Trang phục, đạo cụ tự thiết kế sáng tạo, tự làm (1.0đ)[cite: 2].<br>• Lịch sự, trang nhã, phù hợp với thuần phong mỹ tục và chủ đề tiết mục (1.0đ)[cite: 2].</td>
+              </tr>
+              <tr>
+                <td><b>4. Tổng thể tiết mục</b></td>
+                <td><b>3.0 điểm</b></td>
+                <td>• Đủ cả 3 thể loại: Hát, Nhảy/Múa, Kịch (1.0đ)[cite: 2].<br>• Chuyển cảnh liền mạch, không bị đứt đoạn, tổng thể hài hòa (1.0đ)[cite: 2].<br>• Phân bổ thời gian giữa các thể loại đúng quy định và cân đối (1.0đ)[cite: 2].</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="content-box">
+        <div class="box-header">
+          <h2>🏆 Cơ Cấu Giải Thưởng & Điểm Cộng Phong Trào Khối 6</h2>
+          <p>Giải thưởng năm học 2026–2027 được trao riêng biệt theo từng khối lớp[cite: 2]</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Hạng mục giải thưởng (Khối 6)</th>
+                <th>Điểm phong trào cộng vào lớp</th>
+                <th>Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🥇 <b>01 Giải Nhất</b></td>
+                <td style="color: #7c3aed; font-weight: 800;">+ 400 điểm</td>
+                <td>Tiết mục xuất sắc nhất khối 6[cite: 2]</td>
+              </tr>
+              <tr>
+                <td>🥈 <b>01 Giải Nhì</b></td>
+                <td style="color: #2563eb; font-weight: 700;">+ 340 điểm</td>
+                <td>Hạng nhì khối 6[cite: 2]</td>
+              </tr>
+              <tr>
+                <td>🥉 <b>01 Giải Ba</b></td>
+                <td style="color: #d97706; font-weight: 700;">+ 320 điểm</td>
+                <td>Hạng ba khối 6[cite: 2]</td>
+              </tr>
+              <tr>
+                <td>🎖️ <b>01 Giải Khuyến khích</b></td>
+                <td style="color: #15803d; font-weight: 700;">+ 300 điểm</td>
+                <td>Đạt chuẩn phong trào[cite: 2]</td>
+              </tr>
+              <tr>
+                <td>🎨 <b>01 Giải Phụ</b></td>
+                <td>Theo công bố BTC</td>
+                <td>Trang phục & Mỹ thuật sân khấu ấn tượng nhất[cite: 2]</td>
+              </tr>
+              <tr>
+                <td>👏 <b>Lớp Tham gia</b></td>
+                <td>+ 200 điểm</td>
+                <td>Hoàn thành phần thi đúng thể lệ[cite: 2]</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- TAB 3: KỶ LUẬT & HƯỚNG DẪN DÀNH CHO PHỤ HUYNH -->
+    <section class="tab-content" id="tab-3">
+      
+      <article class="content-box">
+        <div class="box-header">
+          <h2>⚖️ Quy Định Kỷ Luật & Trừ Điểm Cần Lưu Ý</h2>
+          <p>Các vi phạm sẽ bị trừ điểm trực tiếp vào điểm trung bình của Ban giám khảo[cite: 2]</p>
+        </div>
+
+        <div class="alert-box alert-danger">
+          <h4>Trừ 3.0 điểm / tiết mục (Ranh giới tự chủ)</h4>
+          <p>Nếu tiết mục có sự hỗ trợ dàn dựng, biên đạo từ phụ huynh, người thân hoặc thuê đạo diễn bên ngoài LSTS[cite: 2]. Tiết mục phải do chính <b>học sinh phối hợp cùng GVCN tự thực hiện</b>[cite: 2].</p>
+        </div>
+
+        <div class="alert-box alert-danger">
+          <h4>Trừ 2.0 đến 3.0 điểm / tiết mục (An toàn cháy nổ & Vệ sinh)</h4>
+          <p>Tuyệt đối cấm sử dụng bột màu, kim tuyến vụn khó quét, pháo sáng hoặc các chất dễ gây cháy nổ, làm bẩn sân khấu gây ảnh hưởng đến phần thi của các lớp sau[cite: 2].</p>
+        </div>
+
+        <div class="alert-box alert-warning">
+          <h4>Trừ điểm thời gian thi đấu</h4>
+          <p>• <b>Quá thời gian:</b> Vượt quá 6 phút sẽ bị trừ <b>0.5 điểm / 1 phút lố</b>[cite: 2].<br>
+          • <b>Thời gian chuẩn bị:</b> Sau khi lớp trước xong, lớp có <b>30 giây</b> bước ra sân khấu ổn định đội hình[cite: 2]. Quá 30 giây chưa bắt đầu diễn thì mỗi phút chậm trễ trừ <b>1.0 điểm</b>[cite: 2].<br>
+          • <b>Nộp nhạc trễ:</b> Sau 16:30 ngày 10/10/2026, mỗi ngày nộp trễ bị trừ <b>1.0 điểm</b>[cite: 2].</p>
+        </div>
+      </article>
+
+      <article class="content-box">
+        <div class="box-header">
+          <h2>🤝 Vai Trò Đồng Hành Phù Hợp Của CMHS</h2>
+          <p>Nguyên tắc đồng hành cùng con theo đúng định hướng nhà trường</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 50%;">✅ CMHS ĐƯỢC KHUYẾN KHÍCH HỖ TRỢ</th>
+                <th style="width: 50%;">⛔ KHÔNG NÊN THỰC HIỆN (ĐỂ HỌC SINH TỰ CHỦ)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>• Hỗ trợ phương tiện, đưa đón học sinh đúng giờ trong các buổi tập[cite: 2].</td>
+                <td>• Không thuê biên đạo, diễn viên ngoài về tập kịch/múa[cite: 2].</td>
+              </tr>
+              <tr>
+                <td>• Hỗ trợ địa điểm tập luyện ngoài giờ tại nhà (nếu học sinh có nhu cầu)[cite: 2].</td>
+                <td>• Không can thiệp chỉnh âm thanh, đèn chiếu sáng khi thi[cite: 2].</td>
+              </tr>
+              <tr>
+                <td>• Giúp con gom nguyên vật liệu tái chế, vật dụng cũ để làm đạo cụ.</td>
+                <td>• Không mua/thuê trang phục biểu diễn đắt tiền làm mất tính sáng tạo[cite: 2].</td>
+              </tr>
+              <tr>
+                <td>• Động viên tinh thần, đến hội trường xem và cổ vũ nhiệt tình cho lớp.</td>
+                <td>• Không can thiệp quyết định thay kịch bản hoặc phân vai của học sinh.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- Chân trang dùng chung -->
+  <footer>
+    <p>© 2026 Tập thể Khối 6. Xây dựng vì mục tiêu nề nếp, kết nối và chủ động.</p>
+  </footer>
+
+  <script>
+    function switchTab(index) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach((tab, i) => {
+        if (i === index) {
+          tab.classList.add('active');
+          contents[i].classList.add('active');
+        } else {
+          tab.classList.remove('active');
+          contents[i].classList.remove('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
+    /* Điều hướng quay về */
     .back-nav {
       display: inline-flex;
       align-items: center;
@@ -23,30 +24,75 @@
     .back-nav:hover {
       transform: translateX(-4px);
     }
+
+    /* Page Header */
     .page-header {
       background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
       color: white;
       padding: 36px 32px;
       border-radius: var(--radius);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       box-shadow: var(--shadow);
     }
     .page-header h1 {
-      font-size: 2rem;
+      font-size: 1.85rem;
       font-weight: 800;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-    .doc-meta {
+    .doc-badge {
       display: inline-block;
       background: rgba(255, 255, 255, 0.2);
       padding: 4px 12px;
       border-radius: 999px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    /* Tabs điều hướng */
+    /* Quick Jump / Mục Lục Nhanh */
+    .toc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .toc-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #f1f5f9;
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .toc-btn:hover {
+      background: #dbeafe;
+      color: var(--primary);
+      border-color: #bfdbfe;
+    }
+
+    /* Bảng Tab điều hướng */
     .nav-tabs {
       display: flex;
       gap: 10px;
@@ -86,39 +132,39 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Thống kê nhanh */
+    /* Thống kê dạng thẻ số */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
     .stat-card {
       background: var(--surface);
       border-radius: var(--radius);
-      padding: 18px 20px;
+      padding: 16px 20px;
       box-shadow: var(--shadow);
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       border: 1px solid var(--border);
     }
     .stat-icon {
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
+      flex-shrink: 0;
     }
     .stat-card:nth-child(1) .stat-icon { background: #dbeafe; color: #2563eb; }
     .stat-card:nth-child(2) .stat-icon { background: #dcfce7; color: #15803d; }
     .stat-card:nth-child(3) .stat-icon { background: #fef3c7; color: #d97706; }
     .stat-card:nth-child(4) .stat-icon { background: #fee2e2; color: #dc2626; }
-
     .stat-info h4 {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -129,74 +175,85 @@
       color: var(--text);
     }
 
-    /* Content Cards & Bảng */
+    /* Content Box */
     .content-box {
       background: var(--surface);
       border-radius: var(--radius);
-      padding: 28px;
+      padding: 24px 28px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
       margin-bottom: 24px;
     }
-    .content-box h2 {
-      font-size: 1.35rem;
-      margin-bottom: 16px;
+    .box-header {
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+    .box-header h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
       display: flex;
       align-items: center;
       gap: 10px;
       color: var(--text);
     }
+    .box-header p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Chuẩn hóa bảng dữ liệu */
     .table-wrapper {
       overflow-x: auto;
-      margin-top: 14px;
+      margin-top: 10px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
     }
     table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
+      font-size: 0.88rem;
     }
     th, td {
       padding: 12px 14px;
       border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
+      vertical-align: top;
     }
     th {
       background-color: #f8fafc;
       font-weight: 700;
       color: var(--text-muted);
+      white-space: nowrap;
     }
-    .badge {
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background-color: #fafbfc;
+    }
+    .highlight-col {
+      background: #eff6ff;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .tag-badge {
       display: inline-block;
-      padding: 3px 8px;
-      border-radius: 4px;
+      padding: 2px 8px;
+      border-radius: 6px;
       font-size: 0.75rem;
       font-weight: 700;
+      white-space: nowrap;
     }
-    .badge-blue { background: #dbeafe; color: #1e40af; }
-    .badge-green { background: #dcfce7; color: #15803d; }
-    .badge-orange { background: #ffedd5; color: #c2410c; }
-
-    .feature-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      font-size: 0.92rem;
-    }
-    .feature-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .feature-list li strong {
-      min-width: 130px;
-      color: var(--text);
-    }
+    .tag-blue { background: #dbeafe; color: #1e40af; }
+    .tag-green { background: #dcfce7; color: #15803d; }
+    .tag-purple { background: #f3e8ff; color: #7e22ce; }
   </style>
 </head>
 <body>
 
-  <!-- Thanh Navbar dùng chung -->
+  <!-- Navbar dùng chung -->
   <header class="navbar">
     <div class="nav-container">
       <a href="../index.html" class="nav-brand">
@@ -214,78 +271,189 @@
   <main class="container">
     <a href="../index.html" class="back-nav">← Quay về Trang chủ</a>
 
-    <!-- Tiêu đề trang -->
+    <!-- Header Thông Báo -->
     <section class="page-header">
-      <div class="doc-meta">Thông báo số 379/TB-THCSTHPTĐTL • Ngày 09/09/2026</div>
-      <h1>Kết Quả Hoạt Động & Định Hướng Nhiệm Vụ</h1>
-      <p>Trường THCS và THPT Đinh Thiện Lý • Tổng kết năm học 2025–2026 và kế hoạch giáo dục năm học 2026–2027.</p>
+      <div class="doc-badge">Số: 379/TB-THCSTHPTĐTL • Ngày 09/09/2026</div>
+      <h1>Kế Hoạch Nhà Trường & Báo Cáo Hoạt Động</h1>
+      <p>Trường THCS và THPT Đinh Thiện Lý • Tổng kết năm học 2025–2026 và Định hướng nhiệm vụ năm học 2026–2027.</p>
     </section>
 
-    <!-- Thống kê nhanh nổi bật năm học 2025-2026 -->
+    <!-- Thống kê nhanh nổi bật -->
     <section class="stats-grid">
       <div class="stat-card">
         <div class="stat-icon">👥</div>
         <div class="stat-info">
-          <h4>Quy mô học sinh</h4>
+          <h4>Tổng số học sinh</h4>
           <p>1.964 HS (64 lớp)</p>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">🎓</div>
         <div class="stat-info">
-          <h4>Tỉ lệ lên lớp thẳng</h4>
-          <p>100% toàn trường</p>
+          <h4>Lên lớp thẳng</h4>
+          <p>100% Toàn trường</p>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">⭐</div>
         <div class="stat-info">
-          <h4>Rèn luyện Khá - Tốt</h4>
-          <p>100% (Tốt: 98.57%)</p>
+          <h4>Học lực Tốt (Khối 6)</h4>
+          <p>88.44% (283 HS)</p>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">🤖</div>
+        <div class="stat-icon">🏆</div>
         <div class="stat-info">
-          <h4>Đấu trường quốc tế</h4>
-          <p>Giải Nhì VEX World 2026</p>
+          <h4>Đấu trường thế giới</h4>
+          <p>Vex World 2026</p>
         </div>
       </div>
     </section>
 
-    <!-- Tabs điều hướng -->
-    <nav class="nav-tabs">
-      <button class="tab-btn active" onclick="switchTab(0)">🚀 Định hướng 2026 – 2027</button>
-      <button class="tab-btn" onclick="switchTab(1)">📊 Kết quả NH 2025 – 2026</button>
-      <button class="tab-btn" onclick="switchTab(2)">🏆 Thành tích nổi bật</button>
-      <button class="tab-btn" onclick="switchTab(3)">🛠️ Cơ sở vật chất</button>
+    <!-- Mục Lục Nhanh (Table of Contents) -->
+    <nav class="toc-card">
+      <div class="toc-title">📑 Mục Lục Tra Cứu Nhanh:</div>
+      <div class="toc-links">
+        <a href="#section-dinh-huong" class="toc-btn" onclick="openTab(0)">🎯 Định hướng 2026-2027</a>
+        <a href="#section-lich" class="toc-btn" onclick="openTab(0)">📅 Lịch đầu năm</a>
+        <a href="#section-tuyen-sinh" class="toc-btn" onclick="openTab(0)">📋 Tuyển sinh</a>
+        <a href="#section-hoc-tap" class="toc-btn" onclick="openTab(1)">📊 Thống kê Học tập</a>
+        <a href="#section-ren-luyen" class="toc-btn" onclick="openTab(1)">🌟 Thống kê Rèn luyện</a>
+        <a href="#section-du-an" class="toc-btn" onclick="openTab(1)">🔬 Dự án theo môn</a>
+        <a href="#section-thanh-tich" class="toc-btn" onclick="openTab(2)">🏆 Bảng giải thưởng</a>
+        <a href="#section-co-so" class="toc-btn" onclick="openTab(3)">🛠️ Cải tạo cơ sở</a>
+      </div>
     </nav>
 
-    <!-- Tab 1: Định hướng nhiệm vụ 2026 - 2027 -->
-    <section class="tab-content active" id="tab-0">
-      <div class="content-box">
-        <h2>🎯 Các Trọng Tâm Giáo Dục Năm Học 2026 – 2027</h2>
-        <ul class="feature-list">
-          <li>
-            <strong>Trường thông minh:</strong> Nâng cao hiệu quả Canvas LMS, phát triển nền tảng <b>AI+</b> cho dạy học và nghiên cứu, thúc đẩy chuyển đổi số toàn diện.
-          </li>
-          <li>
-            <strong>Trường hài hòa:</strong> Khảo sát trải nghiệm trường học, nâng cao sức khỏe thể chất & tinh thần, thực hiện giáo dục tích cực và chính sách <i>Bảo vệ trẻ em</i>, phấn đấu đạt kiểm định quốc tế <b>CIS</b>.
-          </li>
-          <li>
-            <strong>Mô hình Deep Learning:</strong> Ứng dụng NPDL và khung năng lực <b>6Cs</b> vào từng môn học và dự án liên môn nhằm phát triển kỹ năng công dân toàn cầu.
-          </li>
-          <li>
-            <strong>Đổi mới NCKH:</strong> Đổi mới chương trình Nghiên cứu khoa học từ khối 7–9, hình thành nền tảng nghiên cứu thực nghiệm (Vật lý, Hóa, Sinh, Toán, KHXH, ICT, Công nghệ).
-          </li>
-          <li>
-            <strong>Chương trình cốt lõi:</strong> Tiếp tục triển khai Tiếng Anh, Đọc & diễn đạt, NCKH, Tin học và chương trình <i>"Learning How to Learn"</i> (Khối 6, 7, 8).
-          </li>
-        </ul>
-      </div>
+    <!-- Tabs chuyển nhóm chủ đề -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab(0)">🚀 Định Hướng & Lịch Trình (2026–2027)</button>
+      <button class="tab-btn" onclick="switchTab(1)">📈 Thống Kê Học Tập & Rèn Luyện (2025–2026)</button>
+      <button class="tab-btn" onclick="switchTab(2)">🏅 Thành Tích & Hoạt Động Phong Trào</button>
+      <button class="tab-btn" onclick="switchTab(3)">🛠️ Cơ Sở Vật Chất & Nâng Cấp</button>
+    </nav>
 
-      <div class="content-box">
-        <h2>📋 Chỉ Tiêu Tuyển Sinh Đầu Cấp & Chuyển Đến</h2>
+    <!-- ==================== TAB 0: ĐỊNH HƯỚNG & LỊCH TRÌNH ==================== -->
+    <section class="tab-content active" id="tab-0">
+      
+      <!-- Khung 1: Trọng tâm giáo dục (Thay thế danh sách thụt lề bằng Bảng Phân Tích) -->
+      <article class="content-box" id="section-dinh-huong">
+        <div class="box-header">
+          <h2>🎯 Trọng Tâm Giáo Dục Năm Học 2026 – 2027</h2>
+          <p>Các trụ cột chiến lược và chương trình cốt lõi triển khai toàn trường</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 22%;">Trụ cột / Mô hình</th>
+                <th style="width: 38%;">Mục tiêu & Định hướng</th>
+                <th style="width: 40%;">Hành động & Nội dung triển khai cụ thể</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Trường học Thông minh</b></td>
+                <td>Chuyển đổi số toàn diện trong dạy học và vận hành</td>
+                <td>• Nâng cao hiệu quả sử dụng Canvas LMS.<br>• Phát triển nền tảng <b>AI+</b> cho giáo viên - nhân viên.<br>• Thúc đẩy năng lực ứng dụng AI cho học sinh.</td>
+              </tr>
+              <tr>
+                <td><b>Trường học Hài hòa</b></td>
+                <td>Sức khỏe toàn diện, trường học hạnh phúc & an toàn</td>
+                <td>• Khảo sát trải nghiệm trường học về thể chất - tinh thần.<br>• Triển khai chính sách <i>Bảo vệ trẻ em</i> đến phụ huynh và đối tác.<br>• Chuẩn bị kiểm định chất lượng quốc tế <b>CIS</b>.</td>
+              </tr>
+              <tr>
+                <td><b>Mô hình Deep Learning</b></td>
+                <td>Phát triển năng lực cốt lõi cho công dân toàn cầu</td>
+                <td>• Nghiên cứu và áp dụng phương pháp giáo dục NPDL.<br>• Đẩy mạnh tích hợp khung năng lực <b>6Cs</b> vào môn học và dự án liên môn.</td>
+              </tr>
+              <tr>
+                <td><b>Phương pháp Giảng dạy</b></td>
+                <td>Lấy học sinh làm trung tâm, thúc đẩy chủ động</td>
+                <td>• Triển khai dạy học truy vấn (IBL) và dạy học dự án (PBL).<br>• Đổi mới dự án học tập K6–K11 đề cao tiếng nói học sinh.<br>• Thành lập cộng đồng học tập chuyên sâu bồi dưỡng HS giỏi.</td>
+              </tr>
+              <tr>
+                <td><b>Chương trình Cốt lõi & Kỹ năng</b></td>
+                <td>Rèn luyện kỹ năng nền tảng và phương pháp học</td>
+                <td>• Tiếp tục chương trình <i>"Learning How to Learn"</i> (Khối 6, 7, 8).<br>• Đổi mới môn NCKH từ K7–K9 với các thí nghiệm thực tiễn.<br>• Chương trình kỹ năng sống & giá trị sống cập nhật.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- Khung 2: Lịch đầu năm học 2026 - 2027 -->
+      <article class="content-box" id="section-lich">
+        <div class="box-header">
+          <h2>📅 Lịch Hoạt Động Đầu Năm Học 2026 – 2027</h2>
+          <p>Thời gian biểu các hoạt động chuyển tiếp và khởi động năm học</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">Thời gian</th>
+                <th style="width: 45%;">Nội dung hoạt động</th>
+                <th style="width: 30%;">Đối tượng tham gia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>30–31/7 & 03/8/2026</b></td>
+                <td>Trại định hướng học tập cho học sinh mới (LSTS Learning Camp)</td>
+                <td><span class="tag-badge tag-blue">Học sinh Khối 6</span></td>
+              </tr>
+              <tr>
+                <td><b>29–31/7/2026</b></td>
+                <td>Trại tập huấn cho học sinh tham gia ban nhạc nhà trường (Band Camp)</td>
+                <td>Học sinh ban nhạc</td>
+              </tr>
+              <tr>
+                <td><b>29–31/7/2026</b></td>
+                <td>Học Giáo dục quốc phòng (GDQP)</td>
+                <td>Học sinh Khối 12</td>
+              </tr>
+              <tr>
+                <td><b>03/8/2026</b></td>
+                <td>Ngày học định hướng tại cơ sở THCS và THPT</td>
+                <td>Học sinh Khối 7 – 12</td>
+              </tr>
+              <tr>
+                <td><b>04/8/2026</b></td>
+                <td><b>Chính thức bắt đầu chương trình học tập năm học 2026 – 2027</b></td>
+                <td><span class="tag-badge tag-green">Toàn trường</span></td>
+              </tr>
+              <tr>
+                <td><b>10/8/2026</b></td>
+                <td>Khai giảng các lớp Tự chọn (không gồm Lựa chọn, ICT, NCKH)</td>
+                <td>Toàn trường</td>
+              </tr>
+              <tr>
+                <td><b>13/8/2026</b></td>
+                <td>Khai giảng sinh hoạt các Câu lạc bộ</td>
+                <td>Toàn trường</td>
+              </tr>
+              <tr>
+                <td><b>17–19/8/2026</b></td>
+                <td>Giao lưu Khoa học với THPT Bailing, Lishan và QT Kang Chiao</td>
+                <td>Học sinh được tuyển chọn</td>
+              </tr>
+              <tr>
+                <td><b>05/9/2026</b></td>
+                <td><b>Lễ Khai giảng năm học mới 2026 – 2027</b></td>
+                <td><span class="tag-badge tag-green">Toàn trường</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- Khung 3: Tuyển sinh năm học 2026 - 2027 -->
+      <article class="content-box" id="section-tuyen-sinh">
+        <div class="box-header">
+          <h2>📋 Chỉ Tiêu Tuyển Sinh Năm Học 2026 – 2027</h2>
+          <p>Kế hoạch phân bổ quy mô đầu cấp và tiếp nhận chuyển trường</p>
+        </div>
         <div class="table-wrapper">
           <table>
             <thead>
@@ -294,7 +462,7 @@
                 <th>Khối lớp</th>
                 <th>Số lớp</th>
                 <th>Chỉ tiêu tuyển sinh</th>
-                <th>Ghi chú</th>
+                <th>Ghi chú chuyên môn</th>
               </tr>
             </thead>
             <tbody>
@@ -303,231 +471,450 @@
                 <td><b>Khối 6</b></td>
                 <td>10 lớp</td>
                 <td>318 học sinh</td>
-                <td>Cơ sở THCS</td>
+                <td>Cơ sở THCS (MSC)</td>
               </tr>
               <tr>
                 <td><b>Khối 10</b></td>
                 <td>8 lớp</td>
                 <td>283 học sinh</td>
-                <td>Cơ sở THPT</td>
+                <td>Cơ sở THPT (HSC)</td>
               </tr>
               <tr>
-                <td><b>Nhận chuyển đến</b></td>
+                <td><b>Tiếp nhận chuyển đến</b></td>
                 <td><b>Khối 11</b></td>
                 <td>-</td>
                 <td>02 học sinh</td>
-                <td>Theo điều kiện tiếp nhận</td>
+                <td>Theo điều kiện học tập của trường</td>
               </tr>
-              <tr>
-                <td colspan="5"><i>* Lưu ý: Học sinh Khối 9 sẽ sử dụng đồng phục chính khóa của cấp THPT.</i></td>
+              <tr style="background: #f8fafc; font-weight: 700;">
+                <td colspan="2">Tổng cộng</td>
+                <td>18 lớp</td>
+                <td>603 học sinh</td>
+                <td><i>* Khối 9 sử dụng đồng phục chính khóa THPT</i></td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>
+      </article>
+
     </section>
 
-    <!-- Tab 2: Kết quả học tập & rèn luyện NH 2025 - 2026 -->
+    <!-- ==================== TAB 1: KẾT QUẢ HỌC TẬP & RÈN LUYỆN ==================== -->
     <section class="tab-content" id="tab-1">
-      <div class="content-box">
-        <h2>📈 Kết Quả Học Tập Toàn Trường (2025 – 2026)</h2>
+      
+      <!-- Khung: Kết quả học tập -->
+      <article class="content-box" id="section-hoc-tap">
+        <div class="box-header">
+          <h2>📈 Kết Quả Học Tập Năm Học 2025 – 2026</h2>
+          <p>Thống kê số lượng và tỷ lệ xếp loại học lực từng khối lớp cuối năm</p>
+        </div>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
                 <th>Khối / Cấp</th>
                 <th>Sĩ số</th>
-                <th>Tốt (SL / %)</th>
-                <th>Khá (SL / %)</th>
-                <th>Đạt (SL / %)</th>
-                <th>Đạt trở lên</th>
+                <th>Tốt (SL)</th>
+                <th>Tốt (%)</th>
+                <th>Khá (SL)</th>
+                <th>Khá (%)</th>
+                <th>Đạt (SL)</th>
+                <th>Đạt (%)</th>
+                <th>Lên lớp thẳng</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr style="background: #eff6ff;">
                 <td><b>Khối 6</b></td>
                 <td>320</td>
-                <td>283 (88.44%)</td>
-                <td>36 (11.30%)</td>
-                <td>1 (0.31%)</td>
-                <td><b>100%</b></td>
+                <td>283</td>
+                <td><b>88.44%</b></td>
+                <td>36</td>
+                <td>11.30%</td>
+                <td>1</td>
+                <td>0.31%</td>
+                <td class="highlight-col">100%</td>
               </tr>
               <tr>
                 <td><b>Khối 7</b></td>
                 <td>318</td>
-                <td>264 (83.02%)</td>
-                <td>52 (16.35%)</td>
-                <td>2 (0.63%)</td>
-                <td><b>100%</b></td>
+                <td>264</td>
+                <td>83.02%</td>
+                <td>52</td>
+                <td>16.35%</td>
+                <td>2</td>
+                <td>0.63%</td>
+                <td class="highlight-col">100%</td>
               </tr>
               <tr>
                 <td><b>Khối 8</b></td>
                 <td>306</td>
-                <td>245 (80.07%)</td>
-                <td>59 (19.28%)</td>
-                <td>2 (0.65%)</td>
-                <td><b>100%</b></td>
+                <td>245</td>
+                <td>80.07%</td>
+                <td>59</td>
+                <td>19.28%</td>
+                <td>2</td>
+                <td>0.65%</td>
+                <td class="highlight-col">100%</td>
               </tr>
               <tr>
                 <td><b>Khối 9</b></td>
                 <td>304</td>
-                <td>267 (87.83%)</td>
-                <td>35 (11.51%)</td>
-                <td>2 (0.66%)</td>
-                <td><b>100%</b></td>
+                <td>267</td>
+                <td>87.83%</td>
+                <td>35</td>
+                <td>11.51%</td>
+                <td>2</td>
+                <td>0.66%</td>
+                <td class="highlight-col">100%</td>
               </tr>
-              <tr style="background: #f8fafc; font-weight: 700;">
-                <td>Cấp THCS</td>
+              <tr style="background: #f1f5f9; font-weight: 700;">
+                <td>CẤP THCS</td>
                 <td>1.248</td>
-                <td>1.059 (84.86%)</td>
-                <td>182 (14.60%)</td>
-                <td>7 (0.56%)</td>
-                <td>100%</td>
+                <td>1.059</td>
+                <td>84.86%</td>
+                <td>182</td>
+                <td>14.60%</td>
+                <td>7</td>
+                <td>0.56%</td>
+                <td class="highlight-col">100%</td>
               </tr>
-              <tr style="background: #f8fafc; font-weight: 700;">
-                <td>Cấp THPT</td>
+              <tr style="background: #f1f5f9; font-weight: 700;">
+                <td>CẤP THPT</td>
                 <td>716</td>
-                <td>642 (89.66%)</td>
-                <td>72 (10.06%)</td>
-                <td>2 (0.28%)</td>
-                <td>100%</td>
+                <td>642</td>
+                <td>89.66%</td>
+                <td>72</td>
+                <td>10.06%</td>
+                <td>2</td>
+                <td>0.28%</td>
+                <td class="highlight-col">100%</td>
               </tr>
-              <tr style="background: #eff6ff; font-weight: 800; color: var(--primary);">
+              <tr style="background: #dbeafe; font-weight: 800; color: #1e3a8a;">
                 <td>TOÀN TRƯỜNG</td>
                 <td>1.964</td>
-                <td>1.701 (86.61%)</td>
-                <td>254 (12.90%)</td>
-                <td>9 (0.46%)</td>
-                <td>100%</td>
+                <td>1.701</td>
+                <td>86.61%</td>
+                <td>254</td>
+                <td>12.90%</td>
+                <td>9</td>
+                <td>0.46%</td>
+                <td class="highlight-col">100%</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>
+      </article>
 
-      <div class="content-box">
-        <h2>🌟 Kết Quả Rèn Luyện (2025 – 2026)</h2>
+      <!-- Khung: Kết quả rèn luyện -->
+      <article class="content-box" id="section-ren-luyen">
+        <div class="box-header">
+          <h2>🌟 Kết Quả Xếp Loại Rèn Luyện (Hạnh Kiểm)</h2>
+          <p>Đánh giá sự tiến bộ về phẩm chất và giá trị cốt lõi của học sinh</p>
+        </div>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
                 <th>Khối / Cấp</th>
                 <th>Sĩ số</th>
-                <th>Tốt (SL / %)</th>
-                <th>Khá (SL / %)</th>
-                <th>Đạt trở lên</th>
+                <th>Tốt (SL)</th>
+                <th>Tốt (%)</th>
+                <th>Khá (SL)</th>
+                <th>Khá (%)</th>
+                <th>Chưa đạt</th>
+                <th>Tỷ lệ Đạt trở lên</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr style="background: #eff6ff;">
                 <td><b>Khối 6</b></td>
                 <td>320</td>
-                <td>318 (99.38%)</td>
-                <td>2 (0.62%)</td>
-                <td><b>100%</b></td>
+                <td>318</td>
+                <td><b>99.38%</b></td>
+                <td>2</td>
+                <td>0.62%</td>
+                <td>0</td>
+                <td class="highlight-col">100%</td>
               </tr>
               <tr>
-                <td><b>Cấp THCS</b></td>
+                <td><b>Khối 7</b></td>
+                <td>318</td>
+                <td>316</td>
+                <td>99.37%</td>
+                <td>2</td>
+                <td>0.63%</td>
+                <td>0</td>
+                <td class="highlight-col">100%</td>
+              </tr>
+              <tr>
+                <td><b>Khối 8</b></td>
+                <td>306</td>
+                <td>301</td>
+                <td>98.37%</td>
+                <td>5</td>
+                <td>1.63%</td>
+                <td>0</td>
+                <td class="highlight-col">100%</td>
+              </tr>
+              <tr>
+                <td><b>Khối 9</b></td>
+                <td>304</td>
+                <td>298</td>
+                <td>98.03%</td>
+                <td>6</td>
+                <td>1.97%</td>
+                <td>0</td>
+                <td class="highlight-col">100%</td>
+              </tr>
+              <tr style="background: #f1f5f9; font-weight: 700;">
+                <td>CẤP THCS</td>
                 <td>1.248</td>
-                <td>1.233 (98.80%)</td>
-                <td>15 (1.20%)</td>
-                <td><b>100%</b></td>
+                <td>1.233</td>
+                <td>98.80%</td>
+                <td>15</td>
+                <td>1.20%</td>
+                <td>0</td>
+                <td class="highlight-col">100%</td>
               </tr>
-              <tr>
-                <td><b>Cấp THPT</b></td>
+              <tr style="background: #f1f5f9; font-weight: 700;">
+                <td>CẤP THPT</td>
                 <td>716</td>
-                <td>703 (98.18%)</td>
-                <td>13 (1.82%)</td>
-                <td><b>100%</b></td>
+                <td>703</td>
+                <td>98.18%</td>
+                <td>13</td>
+                <td>1.82%</td>
+                <td>0</td>
+                <td class="highlight-col">100%</td>
               </tr>
-              <tr style="background: #eff6ff; font-weight: 800; color: var(--primary);">
+              <tr style="background: #dbeafe; font-weight: 800; color: #1e3a8a;">
                 <td>TOÀN TRƯỜNG</td>
                 <td>1.964</td>
-                <td>1.936 (98.57%)</td>
-                <td>28 (1.43%)</td>
-                <td>100%</td>
+                <td>1.936</td>
+                <td>98.57%</td>
+                <td>28</td>
+                <td>1.43%</td>
+                <td>0</td>
+                <td class="highlight-col">100%</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <!-- Tab 3: Thành tích & Hoạt động phong trào -->
-    <section class="tab-content" id="tab-2">
-      <div class="content-box">
-        <h2>🌍 Dấu Ấn Nổi Bật Tại Các Cuộc Thi Lớn</h2>
-        <ul class="feature-list">
-          <li>
-            <strong>Vex World 2026:</strong> Đạt <b>01 Giải Nhì thế giới</b> (Design Award - bảng Math khối THCS) tại Vex World Championship (Hoa Kỳ).
-          </li>
-          <li>
-            <strong>Robotics & AI:</strong> Huy chương Đồng Quốc tế WRO 2025; Giải Xuất sắc APRA 2025; 3 giải Chung kết Quốc gia FIRST® LEGO® League (FLL) 2026.
-          </li>
-          <li>
-            <strong>Học sinh giỏi TP:</strong> 23 giải HSG Khối 12; 09 giải HSG Khối 9; 33 huy chương Olympic TP.HCM; 02 đề tài Khoa học Kỹ thuật cấp Thành phố.
-          </li>
-          <li>
-            <strong>Nghệ thuật & Tranh biện:</strong> CLB Glee LSTS đạt Cúp Vàng liên hoan ban nhạc "Văn Hiến Melody No.2"; nhiều giải Vàng tại các giải tranh biện SSIS Debate Fall & Spring Invitational.
-          </li>
-          <li>
-            <strong>Service Learning:</strong> Học sinh THCS hoàn thành 52 chuyến công tác xã hội với tổng giá trị hơn 407 triệu đồng hỗ trợ cộng đồng và bảo vệ môi trường.
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Tab 4: Cải tạo cơ sở vật chất -->
-    <section class="tab-content" id="tab-3">
-      <div class="content-box">
-        <h2>🏢 Cải Tạo Cơ Sở Vật Chất Đón Năm Học Mới (2026–2027)</h2>
+      <!-- Khung: Dạy học theo dự án -->
+      <article class="content-box" id="section-du-an">
+        <div class="box-header">
+          <h2>🔬 Danh Mục Dự Án Môn Học Tiêu Biểu</h2>
+          <p>Các dự án học tập theo hướng trải nghiệm thực tế được triển khai trong năm</p>
+        </div>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th>Cơ sở</th>
-                <th>Khu vực thực hiện</th>
-                <th>Nội dung nâng cấp</th>
+                <th>Học kỳ</th>
+                <th>Tên dự án</th>
+                <th>Bộ môn phụ trách</th>
+                <th>Khối lớp triển khai</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td rowspan="4"><b>Cơ sở THCS (MSC)</b></td>
-                <td>Khu văn phòng & phòng chức năng</td>
-                <td>Cải tạo văn phòng tầng trệt (A104–A108), phòng Tham vấn A208, các phòng B201, A211, B113, B114.</td>
+                <td rowspan="3"><b>Học kỳ I</b></td>
+                <td>Những mảnh ghép cảm xúc</td>
+                <td>Ngữ văn</td>
+                <td><span class="tag-badge tag-blue">Khối 6</span></td>
               </tr>
               <tr>
-                <td>Khu lớp học & hành lang</td>
-                <td>Thay gạch sàn phòng học và hành lang tầng 2, 3, 4; sơn tường khuôn viên trường.</td>
+                <td>Ươm mầm</td>
+                <td>Khoa học tự nhiên (KHTN)</td>
+                <td>Khối 7</td>
               </tr>
               <tr>
-                <td>Khu rèn luyện & thể thao</td>
-                <td>Cải tạo sàn sân cờ A và sàn khu vực hồ bơi.</td>
+                <td>Make It Math</td>
+                <td>Toán học</td>
+                <td>Khối 8</td>
               </tr>
               <tr>
-                <td>Hệ thống kỹ thuật</td>
-                <td>Thay mới FCU máy lạnh trung tâm, tháp giải nhiệt và nâng cấp hệ thống camera quan sát.</td>
+                <td rowspan="6"><b>Học kỳ II</b></td>
+                <td>Carbon Footprint Fighters</td>
+                <td>Lịch sử & Địa lý</td>
+                <td><span class="tag-badge tag-blue">Khối 6</span></td>
               </tr>
               <tr>
-                <td rowspan="2"><b>Cơ sở THPT (HSC)</b></td>
-                <td>Phòng chuyên đề & Không gian chung</td>
-                <td>Làm mới phòng Truyền thống, phòng Tuyển sinh, sảnh tầng 4 và sân C19.</td>
+                <td>Văn học và đời sống</td>
+                <td>Ngữ văn</td>
+                <td>Khối 7</td>
               </tr>
               <tr>
-                <td>Hạ tầng & Cảnh quan</td>
-                <td>Cải tạo mặt bàn lớp học, nâng cấp làm mới Cổng 1 và Cổng 3.</td>
+                <td>FeelTech</td>
+                <td>KHTN – Tin học</td>
+                <td>Khối 8</td>
+              </tr>
+              <tr>
+                <td>62 dự án F.E.A.T. WEEKS</td>
+                <td>Phát triển bền vững</td>
+                <td>Khối 9</td>
+              </tr>
+              <tr>
+                <td>129 dự án F.E.A.T. WEEKS</td>
+                <td>Nghiên cứu khoa học</td>
+                <td>Khối 10</td>
+              </tr>
+              <tr>
+                <td>52 dự án F.E.A.T. WEEKS</td>
+                <td>Chủ đề Start-up</td>
+                <td>Khối 11</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>
+      </article>
+
+    </section>
+
+    <!-- ==================== TAB 2: THÀNH TÍCH THI ĐẤU ==================== -->
+    <section class="tab-content" id="tab-2">
+      
+      <article class="content-box" id="section-thanh-tich">
+        <div class="box-header">
+          <h2>🏆 Bảng Tổng Hợp Giải Thưởng Học Thuật & Phong Trào</h2>
+          <p>Thành tích tiêu biểu của học sinh LSTS trên đấu trường Quốc gia và Quốc tế</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 35%;">Tên cuộc thi / Kỳ thi</th>
+                <th style="width: 20%;">Cấp tổ chức</th>
+                <th style="width: 25%;">Thành tích đạt được</th>
+                <th style="width: 20%;">Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: #fefce8;">
+                <td><b>Vex World Championship 2026</b></td>
+                <td><span class="tag-badge tag-purple">Thế giới (Mỹ)</span></td>
+                <td><b>01 Giải Nhì thế giới</b></td>
+                <td>Design Award (bảng Math THCS)</td>
+              </tr>
+              <tr>
+                <td>ROBOTACON WRO 2025</td>
+                <td>Quốc tế</td>
+                <td>01 Huy chương Đồng</td>
+                <td>Vòng Quốc tế</td>
+              </tr>
+              <tr>
+                <td>APRA International Final 2025</td>
+                <td>Quốc tế</td>
+                <td>01 Giải Xuất sắc</td>
+                <td>Robotics quốc tế</td>
+              </tr>
+              <tr>
+                <td>FIRST® LEGO® League (FLL) 2026</td>
+                <td>Toàn quốc</td>
+                <td>03 Giải thưởng</td>
+                <td>Innovation Project & Core Value</td>
+              </tr>
+              <tr>
+                <td>Kỳ thi Học sinh giỏi Cấp TP</td>
+                <td>Thành phố Hồ Chí Minh</td>
+                <td>23 Giải (K12) • 09 Giải (K9)</td>
+                <td>Toán, Văn, Anh, Lý, Hóa, Sinh, Sử, Địa</td>
+              </tr>
+              <tr>
+                <td>Olympic Thành phố Hồ Chí Minh</td>
+                <td>Thành phố Hồ Chí Minh</td>
+                <td>33 Huy chương</td>
+                <td>Olympic Khối 10 & Khối 11</td>
+              </tr>
+              <tr>
+                <td>Khoa học kỹ thuật cấp Thành phố</td>
+                <td>Thành phố Hồ Chí Minh</td>
+                <td>02 Đề tài đạt giải</td>
+                <td>1 Giải Nhì đồng đội, 1 Giải Nhì cá nhân</td>
+              </tr>
+              <tr>
+                <td>World Scholar's Cup (WSC)</td>
+                <td>Quốc tế</td>
+                <td>25 Giải thưởng</td>
+                <td>14 Huy chương Vàng, 11 Huy chương Bạc</td>
+              </tr>
+              <tr>
+                <td>Liên hoan Ban nhạc "Văn Hiến Melody"</td>
+                <td>Mở rộng TP.HCM</td>
+                <td><b>01 Giải Vàng Bảng B2</b></td>
+                <td>CLB Glee LSTS (Bán chuyên học sinh)</td>
+              </tr>
+              <tr>
+                <td>Dự án Học tập phục vụ cộng đồng</td>
+                <td>Cấp THCS</td>
+                <td>52 chuyến công tác xã hội</td>
+                <td>Quyên góp hơn 407.899.049 VNĐ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ==================== TAB 3: CƠ SỞ VẬT CHẤT ==================== -->
+    <section class="tab-content" id="tab-3">
+      
+      <article class="content-box" id="section-co-so">
+        <div class="box-header">
+          <h2>🛠️ Công Tác Cải Tạo & Nâng Cấp Cơ Sở Vật Chất</h2>
+          <p>Hạng mục thực hiện đón năm học mới 2026–2027 phục vụ học sinh</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">Khuôn viên / Cơ sở</th>
+                <th style="width: 35%;">Khu vực thi công</th>
+                <th style="width: 40%;">Chi tiết các hạng mục nâng cấp</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="4"><b>Cơ sở THCS (MSC)</b><br><small style="color: var(--text-muted);">Khối 6 – Khối 9</small></td>
+                <td>Khu văn phòng & Tham vấn</td>
+                <td>• Cải tạo khu văn phòng tầng trệt (từ phòng A104 đến A108).<br>• Cải tạo hoàn thiện phòng Tham vấn học đường A208.</td>
+              </tr>
+              <tr>
+                <td>Phòng học & Hành lang</td>
+                <td>• Cải tạo phòng B201, A211, B113, B114.<br>• Thay toàn bộ gạch sàn lớp học và hành lang tầng 2, 3, 4.<br>• Sơn mới tường bên ngoài và khuôn viên trong trường.</td>
+              </tr>
+              <tr>
+                <td>Khu thể thao & Rèn luyện</td>
+                <td>• Cải tạo sàn sân cờ A.<br>• Làm mới sàn chống trượt khu vực hồ bơi.</td>
+              </tr>
+              <tr>
+                <td>Hệ thống máy lạnh & An ninh</td>
+                <td>• Thay mới hệ thống quạt lạnh FCU lớp học và tháp giải nhiệt trung tâm.<br>• Nâng cấp hệ thống camera quan sát toàn trường.</td>
+              </tr>
+              <tr>
+                <td rowspan="2"><b>Cơ sở THPT (HSC)</b><br><small style="color: var(--text-muted);">Khối 10 – Khối 12</small></td>
+                <td>Không gian chức năng</td>
+                <td>• Làm mới lại phòng Truyền thống và phòng Tuyển sinh.<br>• Thiết kế và nâng cấp sảnh tầng 4 cùng sân C19.</td>
+              </tr>
+              <tr>
+                <td>Hạ tầng & Cổng trường</td>
+                <td>• Cải tạo bề mặt bàn học sinh đã xuống cấp.<br>• Nâng cấp, hoàn thiện cảnh quan Cổng 1 và Cổng 3.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
     </section>
 
   </main>
 
   <!-- Chân trang dùng chung -->
   <footer>
-    <p>© 2026 Trường THCS và THPT Đinh Thiện Lý. Xây dựng vì mục tiêu nền nếp, kết nối và chủ động.</p>
+    <p>© 2026 Trường THCS và THPT Đinh Thiện Lý. Xây dựng vì mục tiêu nề nếp, kết nối và chủ động.</p>
   </footer>
 
   <script>
@@ -544,6 +931,11 @@
           contents[i].classList.remove('active');
         }
       });
+    }
+
+    // Hỗ trợ nút nhảy nhanh từ mục lục
+    function openTab(tabIndex) {
+      switchTab(tabIndex);
     }
   </script>
 </body>

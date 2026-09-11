@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cổng Thông Tin Lớp Học - Niên Khóa 2026–2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* CSS chuyên biệt cho trang chủ */
+    .hero-banner {
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+      color: white;
+      padding: 40px;
+      border-radius: var(--radius);
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .hero-banner h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    /* Bảng tin nhanh */
+    .notice-board {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+    }
+    .notice-board h3 {
+      font-size: 1.1rem;
+      color: #b45309;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notice-board ul {
+      list-style-position: inside;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Lưới các chuyên đề */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .hub-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .hub-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      border-color: var(--primary-light);
+    }
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .hub-card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .hub-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .card-btn {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar cố định -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span>🏫</span> Cổng Thông Tin Lớp 6
+      </a>
+      <ul class="nav-menu">
+        <li><a href="pages/nha-truong.html" class="nav-link">Nhà trường</a></li>
+        <li><a href="pages/phoi-hop.html" class="nav-link">Phối hợp</a></li>
+        <li><a href="pages/hoi-thao.html" class="nav-link">Hội thao</a></li>
+        <li><a href="pages/van-nghe.html" class="nav-link">Văn nghệ</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Thân trang chủ -->
+  <main class="container">
+    
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-badge">Niên khóa 2026 – 2027</div>
+      <h1>Không Gian Thông Tin & Nề Nếp Lớp Học</h1>
+      <p>Trang tổng hợp mọi thông báo, kế hoạch tuần và hoạt động trọng tâm dành cho học sinh và phụ huynh.</p>
+    </section>
+
+    <!-- Bảng tin nhanh (Cập nhật hàng tuần) -->
+    <section class="notice-board">
+      <h3>📌 Lưu Ý Nóng Trong Tuần</h3>
+      <ul>
+        <li><b>Hội thao HK1:</b> Rà soát danh sách VĐV Bóng đá (hạn chót bốc thăm trước ngày 31/10/2026).</li>
+        <li><b>Chuyên cần:</b> Học sinh có mặt tại lớp trước 7:15 sáng, trang phục chỉnh tề đúng quy định.</li>
+      </ul>
+    </section>
+
+    <!-- 4 Khối chuyên đề nhánh -->
+    <section class="hub-grid">
+      
+      <!-- Nhánh 1: Tình hình nhà trường -->
+      <a href="pages/nha-truong.html" class="hub-card">
+        <div>
+          <div class="card-icon">🏛️</div>
+          <h2>Thông Tin Nhà Trường</h2>
+          <p>Nội quy học sinh, lịch biểu năm học, thông báo từ Ban giám hiệu và các phòng ban chức năng.</p>
+        </div>
+        <span class="card-btn">Xem quy định &rarr;</span>
+      </a>
+
+      <!-- Nhánh 2: Công tác phối hợp -->
+      <a href="pages/phoi-hop.html" class="hub-card">
+        <div>
+          <div class="card-icon">🤝</div>
+          <h2>Công Tác Phối Hợp</h2>
+          <p>Kênh trao đổi PH-GV, lịch họp định kỳ, quy trình xin phép nghỉ học và kế hoạch ban đại diện.</p>
+        </div>
+        <span class="card-btn">Chi tiết liên lạc &rarr;</span>
+      </a>
+
+      <!-- Nhánh 3: Hội thao -->
+      <a href="pages/hoi-thao.html" class="hub-card">
+        <div>
+          <div class="card-icon">⚽</div>
+          <h2>Hội Thao Khối 6</h2>
+          <p>Cẩm nang chi tiết 4 môn (Bóng đá, Cầu lông, Nhảy dây, Bóng rổ), lịch thi và trắc nghiệm luật.</p>
+        </div>
+        <span class="card-btn">Vào trang hội thao &rarr;</span>
+      </a>
+
+      <!-- Nhánh 4: Văn nghệ & Phong trào -->
+      <a href="pages/van-nghe.html" class="hub-card">
+        <div>
+          <div class="card-icon">🎭</div>
+          <h2>Văn Nghệ & Sự Kiện</h2>
+          <p>Kế hoạch tập luyện các ngày lễ lớn (20/11, Khai giảng, Tết), phân công đạo cụ và hình ảnh kỷ niệm.</p>
+        </div>
+        <span class="card-btn">Xem kế hoạch &rarr;</span>
+      </a>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Tập thể Khối 6. Xây dựng vì mục tiêu nề nếp, kết nối và chủ động.</p>
+  </footer>
+
+</body>
+</html>

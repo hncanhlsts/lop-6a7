@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cẩm Nang Hội Thao Khối 6 - NH 2026-2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #f59e0b;
+      --danger: #ef4444;
+      --success: #10b981;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+      color: white;
+      padding: 48px 20px 64px;
+      text-align: center;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Layout Container */
+    .container {
+      max-width: 1080px;
+      margin: -36px auto 0;
+      padding: 0 20px;
+    }
+
+    /* Quick Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .stat-card:nth-child(1) .stat-icon { background: #dbeafe; color: #2563eb; }
+    .stat-card:nth-child(2) .stat-icon { background: #fef3c7; color: #d97706; }
+    .stat-card:nth-child(3) .stat-icon { background: #fee2e2; color: #dc2626; }
+    .stat-card:nth-child(4) .stat-icon { background: #d1fae5; color: #059669; }
+
+    .stat-info h4 {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-info p {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 10px;
+      background: #e2e8f0;
+      padding: 6px;
+      border-radius: 14px;
+      margin-bottom: 28px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--card-bg);
+      color: var(--primary);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Content Cards */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-box {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .content-box h2 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Sports Grid */
+    .sports-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .sport-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sport-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--primary);
+    }
+
+    .sport-card.soccer::before { background: #10b981; }
+    .sport-card.badminton::before { background: #f59e0b; }
+    .sport-card.rope::before { background: #8b5cf6; }
+    .sport-card.basketball::before { background: #ef4444; }
+
+    .sport-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .sport-header h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .sport-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    .spec-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.92rem;
+    }
+
+    .spec-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .spec-list li strong {
+      color: var(--text);
+      min-width: 90px;
+    }
+
+    /* Table Design */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    th {
+      background-color: #f8fafc;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* Alert / Warning Box */
+    .alert-box {
+      border-left: 4px solid var(--danger);
+      background: #fef2f2;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 16px;
+      font-size: 0.92rem;
+    }
+
+    .alert-box h4 {
+      color: var(--danger);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    /* Interactive Quiz Section */
+    .quiz-card {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .quiz-opt-btn {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 8px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .quiz-opt-btn:hover {
+      background: #f1f5f9;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Năm học 2026 – 2027</div>
+    <h1>CẨM NANG HỘI THAO KHỐI 6</h1>
+    <p>Thông tin thể thức, quy định tham gia và lịch thi đấu chi tiết dành riêng cho học sinh khối 6.</p>
+  </header>
+
+  <main class="container">
+    <!-- Thống kê nhanh -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">🏃</div>
+        <div class="stat-info">
+          <h4>Môn thi đấu</h4>
+          <p>4 Môn thể thao</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-info">
+          <h4>Giới hạn</h4>
+          <p>Tối đa 2 môn / HS</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-info">
+          <h4>Điểm Nhất / Tham gia</h4>
+          <p>100 / 50 điểm</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⚠️</div>
+        <div class="stat-info">
+          <h4>Kỷ luật</h4>
+          <p>-20đ nếu trễ/sai</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Điều hướng Tab -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab(0)">🏅 Các môn thi đấu (Khối 6)</button>
+      <button class="tab-btn" onclick="switchTab(1)">📅 Lịch & Thang điểm</button>
+      <button class="tab-btn" onclick="switchTab(2)">⚠️ Kỷ luật & Sức khỏe</button>
+      <button class="tab-btn" onclick="switchTab(3)">❓ Kiểm tra nhanh</button>
+    </nav>
+
+    <!-- Tab 1: Chi tiết 4 Môn thi đấu -->
+    <section class="tab-content active" id="tab-0">
+      <div class="sports-grid">
+        
+        <!-- Môn Bóng Đá -->
+        <article class="sport-card soccer">
+          <div class="sport-header">
+            <div>
+              <h3>⚽ Bóng Đá</h3>
+              <small style="color: var(--text-muted)">Học kỳ 1 • 31/10/2026</small>
+            </div>
+            <span class="sport-tag">Loại trực tiếp 2 lần thua</span>
+          </div>
+          <ul class="spec-list">
+            <li><strong>Nhân sự:</strong> 10 chính thức (5 nam, 5 nữ) + 6 dự bị (3 nam, 3 nữ; tối thiểu 2 nam, 2 nữ).</li>
+            <li><strong>Thời gian:</strong> 2 hiệp, mỗi hiệp 5 phút. <b>Hiệp 1: Nữ đá — Hiệp 2: Nam đá</b>.</li>
+            <li><strong>Tính điểm:</strong> Tổng bàn thắng cả 2 hiệp. Hòa đá luân lưu (penalty).</li>
+            <li><strong>Bóng thi:</strong> Bóng Động Lực size 4.</li>
+            <li><strong>Lưu ý:</strong> VĐV tự chuẩn bị bảo hộ chân (bọc ống quyển). Tuyệt đối <u>không</u> dùng giày đinh cỏ tự nhiên.</li>
+          </ul>
+        </article>
+
+        <!-- Môn Cầu Lông -->
+        <article class="sport-card badminton">
+          <div class="sport-header">
+            <div>
+              <h3>🏸 Cầu Lông</h3>
+              <small style="color: var(--text-muted)">Học kỳ 1 • 14/11/2026</small>
+            </div>
+            <span class="sport-tag">Loại trực tiếp 2 lần thua</span>
+          </div>
+          <ul class="spec-list">
+            <li><strong>Nội dung:</strong> Đơn nữ (1), Đơn nam (1), Đôi nữ (2), Đôi nam (2), Đôi nam nữ (1 nam + 1 nữ).</li>
+            <li><strong>Dự bị:</strong> 3 nam, 3 nữ.</li>
+            <li><strong>Thời lượng:</strong> Mỗi nội dung thi đấu 1 hiệp chạm 15 điểm.</li>
+            <li><strong>Lưu ý:</strong> Một học sinh không được đăng ký quá 2 nội dung (kể cả chính thức hay dự bị).</li>
+          </ul>
+        </article>
+
+        <!-- Môn Nhảy Dây Tiếp Sức -->
+        <article class="sport-card rope">
+          <div class="sport-header">
+            <div>
+              <h3>🪢 Nhảy Dây Tiếp Sức</h3>
+              <small style="color: var(--text-muted)">Học kỳ 1 • 14/11/2026</small>
+            </div>
+            <span class="sport-tag">Loại trực tiếp 2 lần thua</span>
+          </div>
+          <ul class="spec-list">
+            <li><strong>Nhân sự:</strong> 10 chính thức (5 nam, 5 nữ) + 4 dự bị (2 nam, 2 nữ).</li>
+            <li><strong>Cách thi:</strong> Xếp 1 hàng dọc. Từng bạn chạy lên nhảy đủ <b>10 cái qua dây</b> (2 chân qua dây, không giẫm vướng) rồi chạy về đập tay bạn tiếp theo.</li>
+            <li><strong>Quy tắc:</strong> Sau khi hoàn thành, bạn nhảy xong đứng sang 1 hàng dọc mới. Lớp có VĐV cuối cùng hoàn thành trước sẽ thắng.</li>
+          </ul>
+        </article>
+
+        <!-- Môn Bóng Rổ -->
+        <article class="sport-card basketball">
+          <div class="sport-header">
+            <div>
+              <h3>🏀 Bóng Rổ</h3>
+              <small style="color: var(--text-muted)">Học kỳ 2 • 20 & 27/03/2027</small>
+            </div>
+            <span class="sport-tag">Loại trực tiếp 1 lần thua</span>
+          </div>
+          <ul class="spec-list">
+            <li><strong>Nhân sự:</strong> Đăng ký 2 đội riêng biệt. Đội Nữ (10 chính thức + dự bị) & Đội Nam (10 chính thức + dự bị).</li>
+            <li><strong>Thời gian:</strong> Mỗi trận 2 hiệp. <b>Nữ: 4 phút/hiệp</b> — <b>Nam: 5 phút/hiệp</b>.</li>
+            <li><strong>Phân định:</strong> Cộng tổng điểm 2 hiệp. Nếu hòa sẽ ném phạt trực tiếp.</li>
+            <li><strong>Cỡ bóng:</strong> Nữ dùng bóng Regu star size 6; Nam dùng bóng Regu star size 7.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Tab 2: Lịch thi đấu & Thang điểm -->
+    <section class="tab-content" id="tab-1">
+      <div class="content-box">
+        <h2>📅 Lịch Trình Chi Tiết Khối 6</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Học kỳ</th>
+                <th>Ngày thi đấu</th>
+                <th>Môn thi</th>
+                <th>Địa điểm & Lưu ý</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2"><b>Học kỳ 1</b></td>
+                <td><b>31/10/2026</b> (Ngày 1)</td>
+                <td>⚽ Bóng đá (Nam & Nữ)</td>
+                <td>Sân cỏ nhân tạo • Đủ bọc ống quyển</td>
+              </tr>
+              <tr>
+                <td><b>14/11/2026</b> (Ngày 2)</td>
+                <td>🏸 Cầu lông<br>🪢 Nhảy dây tiếp sức</td>
+                <td>Nhà thể thao đa năng</td>
+              </tr>
+              <tr>
+                <td rowspan="2"><b>Học kỳ 2</b></td>
+                <td><b>20/03/2027</b> (Ngày 1)</td>
+                <td>🏀 Bóng rổ (Vòng loại)</td>
+                <td>Sân bóng rổ</td>
+              </tr>
+              <tr>
+                <td><b>27/03/2027</b> (Ngày 2)</td>
+                <td>🏀 Bóng rổ (Vòng chung kết)</td>
+                <td>Sân bóng rổ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <h2>🏆 Cơ Cấu Điểm Thi Đua</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Hạng mục</th>
+                <th>Điểm số</th>
+                <th>Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🥇 <b>Giải Nhất</b></td>
+                <td style="color: #16a34a; font-weight: 700;">100 điểm</td>
+                <td>Vô địch nội dung/môn</td>
+              </tr>
+              <tr>
+                <td>🥈 <b>Giải Nhì</b></td>
+                <td style="color: #2563eb; font-weight: 700;">85 điểm</td>
+                <td>Hạng nhì</td>
+              </tr>
+              <tr>
+                <td>🥉 <b>Giải Ba</b></td>
+                <td style="color: #d97706; font-weight: 700;">80 điểm</td>
+                <td>Đồng hạng ba</td>
+              </tr>
+              <tr>
+                <td>🎖️ <b>Tham gia</b></td>
+                <td>50 điểm</td>
+                <td>Tham gia đầy đủ, đúng điều lệ</td>
+              </tr>
+              <tr>
+                <td>❌ <b>Bỏ cuộc / Xử thua</b></td>
+                <td style="color: var(--danger); font-weight: 700;">0 điểm</td>
+                <td>Không được cộng điểm môn này</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Kỷ luật & Sức khỏe -->
+    <section class="tab-content" id="tab-2">
+      <div class="content-box">
+        <h2>🩺 Điều Kiện Tham Gia & Sức Khỏe</h2>
+        <div class="alert-box" style="border-color: #0284c7; background: #f0f9ff;">
+          <h4 style="color: #0284c7;">Lưu ý đặc biệt về sức khỏe</h4>
+          <p>Học sinh phải qua quá trình tập luyện và có thể lực tốt. Những học sinh có bệnh lý về <b>tim mạch, hen suyễn</b> hoặc gặp khó khăn khi vận động mạnh <b>tuyệt đối không tham gia thi đấu</b> (chỉ tham gia đội cổ vũ của lớp).</p>
+        </div>
+        <p>• Mỗi học sinh chỉ thi đấu cho chính lớp của mình, không được thi đấu cho lớp khác.</p>
+        <p>• Mỗi học sinh chỉ được tham gia <b>tối đa 2 môn</b> trong cả kỳ Hội thao.</p>
+      </div>
+
+      <div class="content-box">
+        <h2>⚖️ Kỷ Luật & Văn Hóa Thi Đấu</h2>
+        
+        <div class="alert-box">
+          <h4>Trừ 20 điểm thi đua</h4>
+          <p>Áp dụng nếu nộp danh sách đăng ký trễ/sai điều lệ hoặc không cử đại diện tham gia buổi bốc thăm.</p>
+        </div>
+
+        <div class="alert-box" style="border-color: #f59e0b; background: #fffbeb;">
+          <h4 style="color: #d97706;">Trừ 5 điểm thi đua tuần</h4>
+          <p>Không giữ vệ sinh chung (xả rác, đổ nước ra sàn, vứt vật dụng bừa bãi tại khu vực thi đấu).</p>
+        </div>
+
+        <ul class="spec-list" style="margin-top: 16px;">
+          <li><strong>Đúng giờ:</strong> Có mặt trước trận đấu. Trường hợp ban tổ chức gọi tên 3 lần không có mặt sẽ bị xử thua.</li>
+          <li><strong>Tinh thần Fair-play:</strong> Tuyệt đối không giơ nắm đấm, lè lưỡi, khiêu khích đối thủ, không văng tục hay đập phá dụng cụ thi đấu.</li>
+          <li><strong>Mạng xã hội:</strong> Không đăng tải hình ảnh/bình luận tiêu cực, bôi nhọ trọng tài, đối thủ hoặc Ban tổ chức trên MXH hoặc nhóm chat.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Tab 4: Quiz trắc nghiệm nhanh cho học sinh -->
+    <section class="tab-content" id="tab-3">
+      <div class="content-box">
+        <h2>❓ Đố Vui Nắm Rõ Luật (Khối 6)</h2>
+        <p>Cùng kiểm tra xem bạn đã nắm chắc các thông tin trước thềm Hội thao chưa nhé!</p>
+
+        <div class="quiz-card">
+          <p><b>Câu 1: Một học sinh khối 6 được tham gia tối đa bao nhiêu môn thi đấu?</b></p>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" onclick="checkAnswer(this, false, 'q1')">A. 1 môn</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(this, true, 'q1')">B. 2 môn</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(this, false, 'q1')">C. Tự do, môn nào cũng được</button>
+          </div>
+          <div class="feedback" id="q1-fb"></div>
+        </div>
+
+        <div class="quiz-card">
+          <p><b>Câu 2: Trong môn Bóng đá Khối 6, thứ tự thi đấu giữa nam và nữ như thế nào?</b></p>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" onclick="checkAnswer(this, true, 'q2')">A. Hiệp 1 Nữ đá, Hiệp 2 Nam đá</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(this, false, 'q2')">B. Hiệp 1 Nam đá, Hiệp 2 Nữ đá</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(this, false, 'q2')">C. Nam và Nữ đá cùng lúc trên sân</button>
+          </div>
+          <div class="feedback" id="q2-fb"></div>
+        </div>
+
+        <div class="quiz-card">
+          <p><b>Câu 3: Đội thi Nhảy dây tiếp sức mỗi bạn cần nhảy thành công bao nhiêu cái trước khi chạy về đổi người?</b></p>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" onclick="checkAnswer(this, false, 'q3')">A. 5 cái</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(this, true, 'q3')">B. 10 cái</button>
+            <button class="quiz-opt-btn" onclick="checkAnswer(this, false, 'q3')">C. 15 cái</button>
+          </div>
+          <div class="feedback" id="q3-fb"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function switchTab(index) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach((tab, i) => {
+        if (i === index) {
+          tab.classList.add('active');
+          contents[i].classList.add('active');
+        } else {
+          tab.classList.remove('active');
+          contents[i].classList.remove('active');
+        }
+      });
+    }
+
+    function checkAnswer(btn, isCorrect, questionId) {
+      const feedback = document.getElementById(`${questionId}-fb`);
+      const buttons = btn.parentElement.querySelectorAll('.quiz-opt-btn');
+      
+      buttons.forEach(b => b.disabled = true);
+
+      if (isCorrect) {
+        btn.style.backgroundColor = '#dcfce7';
+        btn.style.borderColor = '#16a34a';
+        btn.style.color = '#15803d';
+        feedback.textContent = '🎉 Chính xác! Bạn đã nắm rất rõ quy định.';
+        feedback.style.color = '#16a34a';
+      } else {
+        btn.style.backgroundColor = '#fee2e2';
+        btn.style.borderColor = '#dc2626';
+        btn.style.color = '#b91c1c';
+        feedback.textContent = '❌ Chưa đúng rồi! Hãy đọc lại cẩm nang nhé.';
+        feedback.style.color = '#dc2626';
+      }
+      feedback.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
